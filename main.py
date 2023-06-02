@@ -10,15 +10,25 @@ name_of_unit = "hours"
 
 
 def days_to_units(num_of_days):
-    if num_of_days > 0:
-        print('all good~')
-        return f"{num_of_days} days are {num_of_days * calculation_of_unit} {name_of_unit}"
-    else:
-        return "bad you enter invalid value"
+    return f"{num_of_days} days are {num_of_days * calculation_of_unit} {name_of_unit}"
 
 
-user_input = input("Enter num of days and i will convert to hours\n")
-user_input_number = int(user_input)
+def validate():
+    try:
+            x = int(num_of_day)
+            if x > 0:
+                y = days_to_units(x)
+                print(y)
+            elif x == 0:
+                print(" you enter 0")
+            else:
+                print(" you enter negative number")
+    except ValueError:
+        print(" you don't place a number")
 
-x = days_to_units(user_input_number)
-print(x)
+
+user_input = ""
+while user_input != "exit":
+    user_input = input("Enter num of days and i will convert to hours, Enter exit to exit \n")
+    for num_of_day in user_input.split():
+        validate()
